@@ -3,7 +3,7 @@ title: Java SDK Failover
 keywords: [Failover]
 description: Java SDL Failover manual
 sidebar:
-  order: 3
+  order: 4
 ---
 
 # Java SDK 容灾

@@ -1,15 +1,15 @@
 ---
-title: Python SDK 使用手册
-keywords: [Python,SDK,使用手册]
-description: 本文档介绍了Nacos的Python SDK(nacos-sdk-python)的使用方式
+title: Python SDK Usage
+keywords: [Python,SDK,Usage]
+description: This document introduces the usage of Nacos's Python SDK (nacos-sdk-python)
 sidebar:
-    order: 6
+  order: 6
 ---
 
-# Python SDK 使用手册
+# Python SDK Usage
 
 
-### 支持 Python version：
+### Supported Python version：
 
 - Python 2.7
 - Python 3.6+

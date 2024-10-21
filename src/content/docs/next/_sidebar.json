@@ -43,6 +43,10 @@
         },
         "items": [
             {
+                "label": "概览",
+                "autogenerate": { "directory": "manual/user/overview" }
+            },
+            {
                 "label": "JAVA SDK",
                 "autogenerate": { "directory": "manual/user/java-sdk" }
             },
@@ -74,13 +78,6 @@
                     "en": "Parameters Check"
                 },
                 "link": "docs/manual/user/parameters-check"
-            },
-            {
-                "label": "多语言SDK概览",
-                "translations": {
-                    "en": "Multi Language SDK"
-                },
-                "link": "docs/manual/user/other-language"
             }
         ]
     },

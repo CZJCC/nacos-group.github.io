@@ -3,7 +3,7 @@ title: Java SDK Usage
 keywords: [Java,SDK,Usage]
 description: This document introduces the usage of Nacos's Java SDK (nacos-client), including how to configure the Nacos Client, how to use the Nacos Client, and how to utilize the Nacos Client's API.
 sidebar:
-  order: 1
+  order: 2
 ---
 
 # Java SDK 使用手册
