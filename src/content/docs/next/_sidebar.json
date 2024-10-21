@@ -47,6 +47,14 @@
                 "autogenerate": { "directory": "manual/user/java-sdk" }
             },
             {
+                "label": "Golang SDK",
+                "autogenerate": { "directory": "manual/user/go-sdk" }
+            },
+            {
+                "label": "Python SDK",
+                "autogenerate": { "directory": "manual/user/python-sdk" }
+            },
+            {
                 "label": "Open API 手册",
                 "translations": {
                     "en": "Open API Manual"
@@ -68,9 +76,9 @@
                 "link": "docs/manual/user/parameters-check"
             },
             {
-                "label": "其他语言SDK",
+                "label": "多语言SDK概览",
                 "translations": {
-                    "en": "Other SDK"
+                    "en": "Multi Language SDK"
                 },
                 "link": "docs/manual/user/other-language"
             }
