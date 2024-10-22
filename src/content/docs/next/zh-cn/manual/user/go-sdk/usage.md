@@ -10,9 +10,9 @@ sidebar:
 
 
 ## 使用限制
-支持Go>=v1.15版本
+Go>=v1.15
 
-支持Nacos>2.x版本
+Nacos>2.x
 
 ## 安装
 使用`go get`安装SDK：
@@ -24,24 +24,24 @@ $ go get -u github.com/nacos-group/nacos-sdk-go/v2
 
 ```go
 constant.ClientConfig{
-	TimeoutMs            uint64 // 请求Nacos服务端的超时时间，默认是10000ms
-	NamespaceId          string // ACM的命名空间Id
-	Endpoint             string // 当使用ACM时，需要该配置. https://help.aliyun.com/document_detail/130146.html
-	RegionId             string // ACM&KMS的regionId，用于配置中心的鉴权
-	AccessKey            string // ACM&KMS的AccessKey，用于配置中心的鉴权
-	SecretKey            string // ACM&KMS的SecretKey，用于配置中心的鉴权
-	OpenKMS              bool   // 是否开启kms，默认不开启，kms可以参考文档 https://help.aliyun.com/product/28933.html
-	                            // 同时DataId必须以"cipher-"作为前缀才会启动加解密逻辑
-	CacheDir             string // 缓存service信息的目录，默认是当前运行目录
-	UpdateThreadNum      int    // 监听service变化的并发数，默认20
-	NotLoadCacheAtStart  bool   // 在启动的时候不读取缓存在CacheDir的service信息
-	UpdateCacheWhenEmpty bool   // 当service返回的实例列表为空时，不更新缓存，用于推空保护
-	Username             string // Nacos服务端的API鉴权Username
-	Password             string // Nacos服务端的API鉴权Password
-	LogDir               string // 日志存储路径
-	RotateTime           string // 日志轮转周期，比如：30m, 1h, 24h, 默认是24h
-	MaxAge               int64  // 日志最大文件数，默认3
-	LogLevel             string // 日志默认级别，值必须是：debug,info,warn,error，默认值是info
+  TimeoutMs            uint64 // 请求Nacos服务端的超时时间，默认是10000ms
+  NamespaceId          string // Nacos的命名空间Id
+  Endpoint             string // 当使用地址服务器时，需要该配置. https://help.aliyun.com/document_detail/130146.html
+  RegionId             string // Nacos&KMS的regionId，用于配置中心的鉴权
+  AccessKey            string // Nacos&KMS的AccessKey，用于配置中心的鉴权
+  SecretKey            string // Nacos&KMS的SecretKey，用于配置中心的鉴权
+  OpenKMS              bool   // 是否开启kms，默认不开启，kms可以参考文档 https://help.aliyun.com/product/28933.html
+                              // 同时DataId必须以"cipher-"作为前缀才会启动加解密逻辑
+  CacheDir             string // 缓存service信息的目录，默认是当前运行目录
+  UpdateThreadNum      int    // 监听service变化的并发数，默认20
+  NotLoadCacheAtStart  bool   // 在启动的时候不读取缓存在CacheDir的service信息
+  UpdateCacheWhenEmpty bool   // 当service返回的实例列表为空时，不更新缓存，用于推空保护
+  Username             string // Nacos服务端的API鉴权Username
+  Password             string // Nacos服务端的API鉴权Password
+  LogDir               string // 日志存储路径
+  RotateTime           string // 日志轮转周期，比如：30m, 1h, 24h, 默认是24h
+  MaxAge               int64  // 日志最大文件数，默认3
+  LogLevel             string // 日志默认级别，值必须是：debug,info,warn,error，默认值是info
 }
 ```
 
@@ -49,11 +49,11 @@ constant.ClientConfig{
 
 ```go
 constant.ServerConfig{
-	ContextPath string // Nacos的ContextPath，默认/nacos，在2.0中不需要设置
-	IpAddr      string // Nacos的服务地址
-	Port        uint64 // Nacos的服务端口
-	Scheme      string // Nacos的服务地址前缀，默认http，在2.0中不需要设置
-	GrpcPort    uint64 // Nacos的 grpc 服务端口, 默认为 服务端口+1000, 不是必填
+  ContextPath string // Nacos的ContextPath，默认/nacos，在2.0中不需要设置
+  IpAddr      string // Nacos的服务地址
+  Port        uint64 // Nacos的服务端口
+  Scheme      string // Nacos的服务地址前缀，默认http，在2.0中不需要设置
+  GrpcPort    uint64 // Nacos的 grpc 服务端口, 默认为 服务端口+1000, 不是必填
 }
 ```
 
@@ -64,12 +64,12 @@ constant.ServerConfig{
 ```go
 // 创建clientConfig
 clientConfig := constant.ClientConfig{
-	NamespaceId:         "e525eafa-f7d7-4029-83d9-008937f9d468", // 如果需要支持多namespace，我们可以创建多个client,它们有不同的NamespaceId。当namespace是public时，此处填空字符串。
-	TimeoutMs:           5000,
-	NotLoadCacheAtStart: true,
-	LogDir:              "/tmp/nacos/log",
-	CacheDir:            "/tmp/nacos/cache",
-	LogLevel:            "debug",
+  NamespaceId:         "e525eafa-f7d7-4029-83d9-008937f9d468", // 如果需要支持多namespace，我们可以创建多个client,它们有不同的NamespaceId。当namespace是public时，此处填空字符串。
+  TimeoutMs:           5000,
+  NotLoadCacheAtStart: true,
+  LogDir:              "/tmp/nacos/log",
+  CacheDir:            "/tmp/nacos/cache",
+  LogLevel:            "debug",
 }
 
 // 创建clientConfig的另一种方式
@@ -91,9 +91,9 @@ serverConfigs := []constant.ServerConfig{
         Scheme:      "http",
     },
     {
-    	IpAddr:      "console2.nacos.io",
-    	ContextPath: "/nacos",
-    	Port:        80,
+      IpAddr:      "console2.nacos.io",
+      ContextPath: "/nacos",
+      Port:        80,
         Scheme:      "http",
     },
 }
@@ -116,14 +116,14 @@ serverConfigs := []constant.ServerConfig{
 
 // 创建服务发现客户端
 _, _ := clients.CreateNamingClient(map[string]interface{}{
-	"serverConfigs": serverConfigs,
-	"clientConfig":  clientConfig,
+  "serverConfigs": serverConfigs,
+  "clientConfig":  clientConfig,
 })
 
 // 创建动态配置客户端
 _, _ := clients.CreateConfigClient(map[string]interface{}{
-	"serverConfigs": serverConfigs,
-	"clientConfig":  clientConfig,
+  "serverConfigs": serverConfigs,
+  "clientConfig":  clientConfig,
 })
 
 // 创建服务发现客户端的另一种方式 (推荐)
@@ -143,12 +143,12 @@ configClient, err := clients.NewConfigClient(
 )
 ```
 
-### Create client for ACM
+### Create client for Nacos
 https://help.aliyun.com/document_detail/130146.html
 
 ```go
 cc := constant.ClientConfig{
-  Endpoint:    "acm.aliyun.com:8080",
+  Endpoint:    "nacos.aliyun.com:8080",
   NamespaceId: "e525eafa-f7d7-4029-83d9-008937f9d468",
   RegionId:    "cn-shanghai",
   AccessKey:   "LTAI4G8KxxxxxxxxxxxxxbwZLBr",
@@ -292,7 +292,7 @@ serviceInfos, err := namingClient.GetAllServicesInfo(vo.GetAllServiceInfoParam{
     NameSpace: "0e83cc81-9d8c-4bb8-a28a-ff703187543f",
     PageNo:   1,
     PageSize: 10,
-	}),
+  }),
 
 ```
 
@@ -338,7 +338,7 @@ err := configClient.ListenConfig(vo.ConfigParam{
     Group:  "group",
     OnChange: func(namespace, group, dataId, data string) {
         fmt.Println("group:" + group + ", dataId:" + dataId + ", data:" + data)
-	},
+  },
 })
 
 ```

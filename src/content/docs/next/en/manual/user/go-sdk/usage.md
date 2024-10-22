@@ -25,11 +25,11 @@ $ go get -u github.com/nacos-group/nacos-sdk-go/v2
 ```go
 constant.ClientConfig{
   TimeoutMs            uint64 // 请求Nacos服务端的超时时间，默认是10000ms
-  NamespaceId          string // ACM的命名空间Id
-  Endpoint             string // 当使用ACM时，需要该配置. https://help.aliyun.com/document_detail/130146.html
-  RegionId             string // ACM&KMS的regionId，用于配置中心的鉴权
-  AccessKey            string // ACM&KMS的AccessKey，用于配置中心的鉴权
-  SecretKey            string // ACM&KMS的SecretKey，用于配置中心的鉴权
+  NamespaceId          string // Nacos的命名空间Id
+  Endpoint             string // 当使用地址服务器时，需要该配置. https://help.aliyun.com/document_detail/130146.html
+  RegionId             string // Nacos&KMS的regionId，用于配置中心的鉴权
+  AccessKey            string // Nacos&KMS的AccessKey，用于配置中心的鉴权
+  SecretKey            string // Nacos&KMS的SecretKey，用于配置中心的鉴权
   OpenKMS              bool   // 是否开启kms，默认不开启，kms可以参考文档 https://help.aliyun.com/product/28933.html
                               // 同时DataId必须以"cipher-"作为前缀才会启动加解密逻辑
   CacheDir             string // 缓存service信息的目录，默认是当前运行目录
@@ -143,12 +143,12 @@ configClient, err := clients.NewConfigClient(
 )
 ```
 
-### Create client for ACM
+### Create client for Nacos
 https://help.aliyun.com/document_detail/130146.html
 
 ```go
 cc := constant.ClientConfig{
-  Endpoint:    "acm.aliyun.com:8080",
+  Endpoint:    "nacos.aliyun.com:8080",
   NamespaceId: "e525eafa-f7d7-4029-83d9-008937f9d468",
   RegionId:    "cn-shanghai",
   AccessKey:   "LTAI4G8KxxxxxxxxxxxxxbwZLBr",
