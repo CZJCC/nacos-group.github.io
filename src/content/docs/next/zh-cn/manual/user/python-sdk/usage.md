@@ -9,23 +9,23 @@ sidebar:
 # Python SDK 使用手册
 
 
-### 支持 Python version：
+### 支持 Python 版本
 
 - Python 2.7
 - Python 3.6+
 
-### Supported Nacos version
+### 支持 Nacos 服务端版本
 - Nacos 0.8.0+
 - Nacos 1.x
 - Nacos 2.x with http protocol
 
 
-## Installation
+## 安装依赖
 ```shell
 pip install nacos-sdk-python
 ```
 
-## Getting Started
+## 开始
 ```python
 import nacos
 
@@ -45,7 +45,7 @@ group = "group"
 print(client.get_config(data_id, group))
 ```
 
-## Configuration
+## 客户端配置
 ```
 client = NacosClient(server_addresses, namespace=your_ns, ak=your_ak, sk=your_sk)
 ```
@@ -57,7 +57,7 @@ client = NacosClient(server_addresses, namespace=your_ns, ak=your_ak, sk=your_sk
 * *log_level* - Log level. | default: null
 * *log_rotation_backup_count* - The number of log files to keep. | default: `7`
 
-#### Extra Options
+#### 额外配置
 Extra option can be set by `set_options`, as following:
 
 ```
@@ -76,9 +76,9 @@ Configurable options are:
 * *no_snapshot* - To disable default snapshot behavior, this can be overridden by param *no_snapshot* in *get* method.
 * *proxies* - Dict proxy mapping, some environments require proxy access, so you can set this parameter, this way http requests go through the proxy.
 
-## API Reference
+## API 列表
  
-### Get Config
+### 获取配置
 >`NacosClient.get_config(data_id, group, timeout, no_snapshot)`
 
 * `param` *data_id* Data id.
@@ -98,7 +98,7 @@ Get value of one config item following priority:
 
 * Step 3 - Get from snapshot dir.
 
-### Add Watchers
+### 增加配置监听
 >`NacosClient.add_config_watchers(data_id, group, cb_list)`
 
 * `param` *data_id* Data id.
@@ -112,7 +112,7 @@ Add watchers to a specified config item.
 * Multiple callbacks on one item is allowed and all callback functions are invoked concurrently by `threading.Thread`.
 * Callback functions are invoked from current process.
 
-### Remove Watcher
+### 移除配置监听
 >`NacosClient.remove_config_watcher(data_id, group, cb, remove_all)`
 
 * `param` *data_id* Data id.
@@ -123,7 +123,7 @@ Add watchers to a specified config item.
 
 Remove watcher from specified key.
 
-### Publish Config
+### 发布配置
 >`NacosClient.publish_config(data_id, group, content, timeout)`
 
 * `param` *data_id* Data id.
@@ -137,7 +137,7 @@ Publish one data item to Nacos.
 * If the data key is exist, update to the content specified.
 * Content can not be set to None, if there is need to delete config item, use function **remove** instead.
 
-### Remove Config
+### 删除配置
 >`NacosClient.remove_config(data_id, group, timeout)`
 * `param` *data_id* Data id.
 * `param` *group* Group, use "DEFAULT_GROUP" if no group specified.
@@ -146,7 +146,7 @@ Publish one data item to Nacos.
 
 Remove one data item from Nacos.
 
-### Register Instance
+### 服务实例注册
 >`NacosClient.add_naming_instance(service_name, ip, port, cluster_name, weight, metadata, enable, healthy,ephemeral,group_name,heartbeat_interval)`
 * `param` *service_name*  **required** Service name to register to.
 * `param` *ip*  **required** IP of the instance.
@@ -160,7 +160,7 @@ Remove one data item from Nacos.
 * `param` *heartbeat_interval* Auto daemon heartbeat interval in seconds.
 * `return` True if success or an exception will be raised.
 
-### Deregister Instance
+### 服务实例取消注册
 >`NacosClient.remove_naming_instance(service_name, ip, port, cluster_name)`
 * `param` *service_name*  **required** Service name to deregister from.
 * `param` *ip*  **required** IP of the instance.
@@ -169,7 +169,7 @@ Remove one data item from Nacos.
 * `param` *ephemeral* A bool value to determine whether instance is ephemeral or not.
 * `return` True if success or an exception will be raised.
 
-### Modify Instance
+### 修改服务实例
 >`NacosClient.modify_naming_instance(service_name, ip, port, cluster_name, weight, metadata, enable)`
 * `param` *service_name*  **required** Service name.
 * `param` *ip*  **required** IP of the instance.
@@ -181,7 +181,7 @@ Remove one data item from Nacos.
 * `param` *ephemeral* A bool value to determine whether instance is ephemeral or not.
 * `return` True if success or an exception will be raised.
 
-### Query Instances
+### 查询服务实例列表
 >`NacosClient.list_naming_instance(service_name, clusters, namespace_id, group_name, healthy_only)`
 * `param` *service_name*  **required** Service name to query.
 * `param` *clusters* Cluster names separated by comma.
@@ -190,7 +190,7 @@ Remove one data item from Nacos.
 * `param` *healthy_only* A bool value for querying healthy instances or not.
 * `return` Instance info list if success or an exception will be raised.
 
-### Query Instance Detail
+### 查询服务实例详情
 >`NacosClient.get_naming_instance(service_name, ip, port, cluster_name)`
 * `param` *service_name*  **required** Service name.
 * `param` *ip*  **required** IP of the instance.
@@ -198,7 +198,7 @@ Remove one data item from Nacos.
 * `param` *cluster_name* Cluster name.
 * `return` Instance info if success or an exception will be raised.
 
-### Send Instance Beat
+### 主动发送心跳
 >`NacosClient.send_heartbeat(service_name, ip, port, cluster_name, weight, metadata)`
 * `param` *service_name*  **required** Service name.
 * `param` *ip*  **required** IP of the instance.
@@ -209,7 +209,7 @@ Remove one data item from Nacos.
 * `param` *metadata* Extra info in JSON string format or dict format.
 * `return` A JSON object include server recommended beat interval if success or an exception will be raised.
 
-### Subscribe Service Instances Changed
+### 服务实例监听
 >`NacosClient.subscribe(listener_fn, listener_interval=7, *args, **kwargs)`
 * `param` *listener_fn*  **required** Customized listener function.
 * `param` *listener_interval*  Listen interval , default 7 second.
@@ -220,17 +220,17 @@ Remove one data item from Nacos.
 * `param` *healthy_only* A bool value for querying healthy instances or not.
 * `return`
 
-### Unsubscribe Service Instances Changed
+### 服务实例取消监听
 >`NacosClient.unsubscribe(service_name, listener_name)`
 * `param` *service_name*  **required** Service name to subscribed.
 * `param` *listener_name*  listener_name which is customized.
 * `return`
 
-### Stop All Service Subscribe 
+### 停止所有服务监听 
 >`NacosClient.stop_subscribe()`
 * `return`
 
-## Debugging Mode
+## 调试模式
 Debugging mode if useful for getting more detailed log on console.
 
 Debugging mode can be set by:
