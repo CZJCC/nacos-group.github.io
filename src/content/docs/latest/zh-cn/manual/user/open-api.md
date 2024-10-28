@@ -3,7 +3,7 @@ title: Open API 手册
 keywords: [Open API,手册]
 description: Open API 手册
 sidebar:
-    order: 4
+    order: 7
 ---
 
 # Open API 手册
